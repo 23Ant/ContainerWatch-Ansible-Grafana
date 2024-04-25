@@ -1,0 +1,2 @@
+[all]
+144.22.136.12 ansible_user=rocky ansible_ssh_private_key_file="/home/opc/playbook-wordpress/ssh-key-2024-04-19.key"

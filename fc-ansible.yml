@@ -1,0 +1,54 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Disable SELinux
+      selinux:
+        state: disabled
+
+    - name: Instalando o nginx
+      dnf:
+        name: nginx
+        state: latest
+
+    - name: Iniciando o nginx
+      service:
+        name: nginx
+        state: started
+
+    - name: Adicionando o repositório Docker
+      dnf:
+        name: dnf-utils
+        state: latest
+
+    - name: Configurando o repositório do Docker
+      command: dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+    - name: Instalando o Docker Engine e ferramentas associadas
+      dnf:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
+        state: latest
+
+    - name: Iniciando e habilitando o Docker
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Permitindo que usuário não-root gerencie o Docker (opcional)
+      user:
+        name: "{{ custom_user | default(omit) }}"
+        groups: docker
+        append: yes
+      when: custom_user is defined
+
+    - name: Permitindo que o usuário corrente gerencie o Docker (opcional)
+      user:
+        name: "{{ ansible_user_id }}"
+        groups: docker
+        append: yes
+      when: ansible_user_id is not undefined
