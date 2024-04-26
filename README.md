@@ -13,24 +13,23 @@ Este repositório contém um conjunto de scripts Ansible para configurar um ambi
 
 ## Instalação
 
-1. Clone este repositório para o seu ambiente de desenvolvimento:
 
-git clone https://github.com/23Ant/ContainerWatch-Ansible-Grafana.git
+1. Clone esse repositorio para o Servidor main ansible.
 
----------------------------------------------------------------------
 
-2. Navegue até o diretório clonado:
+-----------------------------------------------------------------------
 
-cd ContainerWatch-Ansible-Grafana
+2. Certifique-se de que o servidor esteja acessível via SSH. Então edite o arquivo hosts definindo os servidores, usuarios e autenticação ao grupo (all)
+	
+Observção: conhecimento previo de ansible para definir o arquivo hosts. 
 
 ----------------------------------------------------------------------
 
 
-3. Edite o arquivo `hosts` e adicione o endereço IP ou hostname do servidor onde você deseja implantar o Grafana, o Prometheus e o cAdvisor. Certifique-se de que o servidor esteja acessível via SSH.
-
-4. Execute o playbook Ansible:
+3. Execute o playbook Ansible:
 
 ansible-playbook -i hosts fc-ansible.yml
+
 
 -----------------------------------------------------------------------
 
@@ -39,7 +38,7 @@ Este playbook irá instalar as dependências necessárias no servidor e configur
 
 ## Configuração Adicional
 
-O playbook Ansible fará a configuração padrão para o Grafana, o Prometheus e o cAdvisor. Se desejar personalizar ou ajustar a configuração dessas ferramentas, você pode editar os arquivos de configuração correspondentes no diretório `roles`.
+Esse codigo ansible clona por padrão esse repositorio " https://github.com/23Ant/ContainerWatch-Dockercomposer-scriptGO.git " assim executando o docker compose contido. 
 
 ## Contribuindo
 
