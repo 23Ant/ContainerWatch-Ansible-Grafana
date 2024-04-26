@@ -1,10 +1,13 @@
 name: Ansible Deploy
 
-on:
+on: 
   push:
     branches:
-      - main  
-
+      - develop 
+  pull_request:
+    branches:
+      - develop
+      
 jobs:
   deploy:
     runs-on: centos-latest  
