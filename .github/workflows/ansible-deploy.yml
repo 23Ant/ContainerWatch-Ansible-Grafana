@@ -1,0 +1,22 @@
+name: Ansible Deploy
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    runs-on: centos-latest  
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install Ansible
+      run: sudo yum install -y epel-release && sudo yum install -y ansible
+
+    - name: Run Ansible Playbook
+      run: ansible-playbook fc-ansible.yml
+      env:
+        custom_user: "rocky" 
