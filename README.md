@@ -1,6 +1,13 @@
 # ContainerWatch-Ansible-Grafana
 Ansible Containerize: Simplificando o monitoramento com Grafana, Ansible e cAdvisor, automatizando a configuração de servidores para o rápido provisionamento de um ambiente de monitoramento completo
 
+
+
+#
+
+v.1 - feature estrutura
+
+
 # Documentação do Repositório ContainerWatch-Ansible-Grafana
 
 Este repositório contém um conjunto de scripts Ansible para configurar um ambiente que utiliza Grafana, Prometheus e cAdvisor em contêineres Docker. O objetivo principal é automatizar o processo de configuração e implantação dessas ferramentas em um servidor.
