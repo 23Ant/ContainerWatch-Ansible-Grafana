@@ -1,2 +1,2 @@
 [all]
-172.208.82.143 ansible_ssh_user=RockyDocker ansible_ssh_pass=******
+172.210.41.180 ansible_ssh_user=RockyDocker ansible_ssh_pass=******
