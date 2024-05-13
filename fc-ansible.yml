@@ -1,6 +1,8 @@
 ---
 - hosts: all
   become: yes
+  vars:
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
   tasks:
     - name: Desative o SELinux
       selinux:
