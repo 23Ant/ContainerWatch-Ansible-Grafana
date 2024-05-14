@@ -42,12 +42,32 @@
         enabled: yes
         state: started
 
+    - name: Verificando dir /home/scripts
+      file:
+        path: /home/scripts
+        state: absent
+
     - name: Clonando o Repositorio para /home/scripts
       git:
         repo: 'https://github.com/23Ant/ContainerWatch-Dockercomposer-scriptGO.git'
         dest: /home/scripts
 
+    - name: Remover container 'app' se existir
+      command: docker rm -f app
+      ignore_errors: yes
+
     - name: Execute Docker Compose
       command: sudo docker compose up -d
       args:
         chdir: /home/scripts
+
+    - name: Entrar no container 'app' e executar Go mod tidy
+      command: docker exec -t app go mod tidy
+
+    - name: Download Go modulo client_golang
+      command: docker exec -t app go mod download github.com/prometheus/client_golang
+
+    - name: Execute o aplicativo Go
+      shell: docker exec -t app go run main.go > output.log 2>&1 &
+      async: 0
+      poll: 0
