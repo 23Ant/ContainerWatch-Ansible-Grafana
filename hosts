@@ -1,2 +1,3 @@
+#LISTA DE SERVIDORES
 [all]
 172.208.82.143 ansible_ssh_user=RockyDocker ansible_ssh_pass=******
